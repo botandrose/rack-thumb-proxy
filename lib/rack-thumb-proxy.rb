@@ -205,7 +205,7 @@ module Rack
 
         # Examples: http://rubular.com/r/oPRK1t31yv
         def routing_pattern
-          /^\/([a-z0-9]{10}|)\/?(:?[0-9]*x+[0-9]*|)(c|n|ne|e|s|sw|w|nw|)\/?(https?.*)$/
+          /^\/([a-z0-9]{10}|)?\/?(:?[0-9]*x+[0-9]*|)(c|n|ne|e|s|sw|w|nw|)\/?(https?.*)$/
         end
 
         def response
