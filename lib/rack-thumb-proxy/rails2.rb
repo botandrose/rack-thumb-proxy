@@ -16,7 +16,7 @@ module Rack
             env["PATH_INFO"].sub! regex, ""
             @downstream.call env
           else
-            @upstream.call env
+            @app.call env
           end
         end
       end
