@@ -39,7 +39,7 @@ module Rack
           @key_length            = 10
           @mount_point           = '/'
           @option_labels         = {}
-          @cache_control_headers = {'Cache-Control' => 'max-age=86400, public, must-revalidate'}
+          @cache_control_headers = {'Cache-Control' => 'max-age=315569260, public, must-revalidate'}
         end
         alias :reset_defaults! :initialize_defaults!
         private :initialize_defaults!
