@@ -163,7 +163,7 @@ module Rack
         end
 
         def request_url
-          CGI.unescape(escaped_request_url)
+          CGI.unescape(escaped_request_url).gsub(" ", "%20")
         end
 
         def escaped_request_url
