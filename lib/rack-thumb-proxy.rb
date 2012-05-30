@@ -34,7 +34,7 @@ module Rack
 
       def initialize(env)
         @env  = env
-        @path = env['PATH_INFO']
+        @path = env['REQUEST_URI']
       end
 
       def call
