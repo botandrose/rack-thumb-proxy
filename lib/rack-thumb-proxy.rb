@@ -1,7 +1,6 @@
 require 'cgi'
 require 'open-uri'
 require 'tempfile'
-require 'rack-thumb-proxy/version'
 require 'rack-thumb-proxy/configuration'
 require 'rack-thumb-proxy/view_helpers'
 
