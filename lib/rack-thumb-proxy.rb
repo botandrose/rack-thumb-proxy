@@ -105,12 +105,8 @@ module Rack
 
             cmd = Mapel(tempfile_path)
 
-            if width && height
-              cmd.gravity(request_gravity)
-              cmd.resize!(width, height)
-            else
-              cmd.resize(width, height, 0, 0, '>')
-            end
+            cmd.gravity(request_gravity)
+            cmd.resize(width, height, 0, 0, '>')
 
             cmd.to(tempfile_path).run
 
