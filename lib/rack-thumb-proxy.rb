@@ -1,6 +1,7 @@
 require 'cgi'
 require 'open-uri'
 require 'tempfile'
+require 'mapel'
 require 'rack-thumb-proxy/configuration'
 require 'rack-thumb-proxy/view_helpers'
 
@@ -100,8 +101,6 @@ module Rack
           return true unless should_resize?
 
           begin
-            require 'mapel'
-
             width, height   = dimensions_from_request_options
             owidth, oheight = dimensions_from_tempfile
 
@@ -183,7 +182,6 @@ module Rack
         end
 
         def dimensions_from_tempfile
-          require 'mapel' unless defined?(Mapel)
           Mapel.info(tempfile_path)[:dimensions]
         end
 
