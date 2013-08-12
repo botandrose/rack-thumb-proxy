@@ -22,6 +22,15 @@ class TestRackThumbProxy < MiniTest::Unit::TestCase
     assert_dimensions last_response.body, 250, 250
   end
 
+  def test_it_should_return_success_with_the_correct_content_length_when_the_url_contains_a_query_string
+    stub_image_request!('250x.gif', 'http://www.example.com/images/noop-kittens.gif?query=string')
+    get '/' + escape('http://www.example.com/images/noop-kittens.gif?query=string')
+    assert last_response.ok?
+    assert_equal file_size_for_fixture('250x.gif').to_s, last_response.headers.fetch('Content-Length')
+    assert_equal file_hash_for_fixture('250x.gif'), file_hash_from_string(last_response.body)
+    assert_dimensions last_response.body, 250, 250
+  end
+
   def test_it_should_return_a_smaller_image_when_resizing_with_minimagick
     stub_image_request!('250x.gif', 'http://www.example.com/images/kittens.gif')
     get '/50x50/' + escape('http://www.example.com/images/kittens.gif')

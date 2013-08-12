@@ -12,7 +12,7 @@ class TestConfigurationApi < MiniTest::Unit::TestCase
     assert_equal nil, default_configuration.secret
     assert_equal 10, default_configuration.key_length
     assert_equal '/', default_configuration.mount_point
-    assert_equal({'Cache-Control' => 'max-age=86400, public, must-revalidate'}, default_configuration.cache_control_headers)
+    assert_equal({'Cache-Control' => 'max-age=315569260, public, must-revalidate'}, default_configuration.cache_control_headers)
   end
 
   def test_it_should_take_a_block_which_is_class_evaluated_keeping_all_options
