@@ -26,17 +26,15 @@ module Rack
         end
 
         def call(env)
-          new(env).call
+          new.call(env)
         end
 
       end
 
-      def initialize(env)
+      def call(env)
         @env  = env
-        @path = env['REQUEST_URI']
-      end
+        @path = extract_path
 
-      def call
         if request_matches?
           validate_signature! &&
           retreive_upstream!  &&
@@ -49,6 +47,13 @@ module Rack
       end
 
       private
+        def extract_path
+          path = @env["PATH_INFO"]
+          if path =~ %r{https?:/[^/]}
+            path.sub! %r{:/}, "://"
+          end
+          path
+        end
 
         def validate_signature!
           true
